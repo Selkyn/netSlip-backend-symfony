@@ -3,3 +3,30 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+api:
+    path: ^/api
+    controller: App\Controller\ApiController::index
+    defaults:
+        _format: json
+    requirements:
+        _format: json|xml
+
+
+api_login_check:
+    path: /api/login_check
+
+add_favorite:
+    path: /api/favorite/add/{omdbId}
+    controller: App\Controller\FavoriteController::addFavorite
+    methods: [POST]
+
+get_favorite:
+    path: /api/favorite/get
+    controller: App\Controller\FavoriteController::getFavorite
+    methods: [GET]
+
+delete_favorite:
+    path: /api/favorite/{favoriteId}/delete
+    controller: App\Controller\FavoriteController::deleteFavorite
+    methods: [DELETE, POST]
